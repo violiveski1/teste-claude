@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pontos de Descarte – Descarte Consciente São Borja</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📍</text></svg>">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">♻️</div>
+    <span class="nav-logo-text">Descarte <span>Consciente</span></span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="mapa.html" class="active">Pontos de Descarte</a></li>
+    <li><a href="noticias.html">Notícias</a></li>
+    <li><a href="estatisticas.html">Estatísticas</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleNav()">☰</button>
+</nav>
+
+<div class="page-wrapper">
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="page-header-tag">📍 Mapa Interativo</div>
+      <h1>Pontos de Descarte</h1>
+      <p>Encontre o local mais próximo para descartar seus equipamentos eletrônicos em São Borja – RS</p>
+    </div>
+  </div>
+
+  <section class="map-section">
+    <div class="section-inner">
+
+      <!-- Filtros -->
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:1.5rem;" id="filtros">
+        <button class="filtro-btn active" data-tipo="todos" onclick="filtrar('todos')">🗺️ Todos</button>
+        <button class="filtro-btn" data-tipo="Ponto Permanente" onclick="filtrar('Ponto Permanente')">🏛️ Permanente</button>
+        <button class="filtro-btn" data-tipo="Coleta Especial" onclick="filtrar('Coleta Especial')">📅 Coleta Especial</button>
+        <button class="filtro-btn" data-tipo="Ponto Parceiro" onclick="filtrar('Ponto Parceiro')">🤝 Parceiros</button>
+        <button class="filtro-btn" data-tipo="Ponto de Pilhas" onclick="filtrar('Ponto de Pilhas')">🔋 Pilhas</button>
+        <button class="filtro-btn" data-tipo="Ponto Educativo" onclick="filtrar('Ponto Educativo')">🏫 Educativo</button>
+      </div>
+
+      <div class="map-layout">
+        <div>
+          <div id="map"></div>
+          <p style="font-size:0.8rem;color:#666;margin-top:8px;text-align:center;">
+            💡 Clique em um marcador para ver detalhes · Selecione um ponto na lista para navegar
+          </p>
+        </div>
+        <div>
+          <h3 style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:1rem;font-size:1rem;">
+            📋 <span id="contagem">6</span> pontos encontrados
+          </h3>
+          <div class="pontos-list" id="pontosList"></div>
+        </div>
+      </div>
+
+      <!-- Aviso -->
+      <div style="background:rgba(46,204,113,0.08);border:1px solid rgba(46,204,113,0.25);border-radius:12px;padding:16px 20px;margin-top:2rem;display:flex;gap:12px;align-items:flex-start;">
+        <span style="font-size:1.5rem;">ℹ️</span>
+        <div>
+          <strong style="font-size:0.9rem;color:#1a6b35;">Ações especiais de coleta</strong>
+          <p style="font-size:0.85rem;color:#3d5a3d;margin-top:4px;line-height:1.5;">
+            A Secretaria Municipal de Meio Ambiente de São Borja realiza periodicamente campanhas de coleta de lixo eletrônico.
+            Acompanhe o <a href="https://www.saoborja.rs.gov.br" target="_blank" style="color:#1a6b35;font-weight:600;">site da Prefeitura</a>
+            e nossas <a href="noticias.html" style="color:#1a6b35;font-weight:600;">notícias</a> para saber das próximas datas.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:36px;height:36px;background:linear-gradient(135deg,#2ecc71,#64b5f6);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;">♻️</div>
+          <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:#fff;">Descarte <span style="color:#2ecc71;">Consciente</span></span>
+        </div>
+        <p>Projeto comunitário educativo sobre o descarte correto de lixo eletrônico em São Borja, Rio Grande do Sul.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Páginas</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="mapa.html">Pontos de Descarte</a></li>
+          <li><a href="noticias.html">Notícias</a></li>
+          <li><a href="estatisticas.html">Estatísticas</a></li>
+          <li><a href="sobre.html">Sobre o Projeto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="#">📧 contato@descarteconsciente.org</a></li>
+          <li><a href="#">🏛️ Secretaria de Meio Ambiente</a></li>
+          <li><a href="https://www.saoborja.rs.gov.br" target="_blank">🌐 saoborja.rs.gov.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Descarte Consciente – São Borja RS · Educação Ambiental</span>
+      <div class="eco-badge">🌿 Projeto Comunitário Sustentável</div>
+    </div>
+  </div>
+</footer>
+
+<style>
+.filtro-btn {
+  background: var(--cinza-claro);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+  color: var(--texto-medio);
+}
+.filtro-btn:hover { border-color: var(--verde-vivo); color: var(--verde-medio); }
+.filtro-btn.active { background: rgba(46,204,113,0.15); border-color: var(--verde-vivo); color: var(--verde-escuro); }
+</style>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/mapa.js"></script>
+<script>
+function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
+
+let tipoAtivo = 'todos';
+function filtrar(tipo) {
+  tipoAtivo = tipo;
+  document.querySelectorAll('.filtro-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.tipo === tipo);
+  });
+  // re-render cards
+  const lista = document.getElementById('pontosList');
+  const cards = lista.querySelectorAll('.ponto-card');
+  let count = 0;
+  cards.forEach((card, i) => {
+    const ponto = pontos[i];
+    const show = tipo === 'todos' || ponto.tipo === tipo;
+    card.style.display = show ? '' : 'none';
+    if (show) count++;
+  });
+  document.getElementById('contagem').textContent = count;
+}
+</script>
+</body>
+</html>

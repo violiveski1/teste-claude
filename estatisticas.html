@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estatísticas – Descarte Consciente São Borja</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">♻️</div>
+    <span class="nav-logo-text">Descarte <span>Consciente</span></span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="mapa.html">Pontos de Descarte</a></li>
+    <li><a href="noticias.html">Notícias</a></li>
+    <li><a href="estatisticas.html" class="active">Estatísticas</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleNav()">☰</button>
+</nav>
+
+<div class="page-wrapper">
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="page-header-tag">📊 Dados e Números</div>
+      <h1>Estatísticas</h1>
+      <p>Entenda a dimensão do problema do lixo eletrônico no Brasil e no mundo com dados atualizados</p>
+    </div>
+  </div>
+
+  <section class="stats-section">
+    <div class="section-inner">
+
+      <!-- KPIs -->
+      <div class="stats-kpi-grid fade-in">
+        <div class="kpi-card">
+          <span class="kpi-icon">🌍</span>
+          <span class="kpi-num">62M</span>
+          <span class="kpi-label">toneladas de e-lixo geradas no mundo em 2023</span>
+        </div>
+        <div class="kpi-card" style="background:linear-gradient(135deg,#0a2540,#1565c0);">
+          <span class="kpi-icon">🇧🇷</span>
+          <span class="kpi-num">2,1M</span>
+          <span class="kpi-label">toneladas geradas pelo Brasil por ano</span>
+        </div>
+        <div class="kpi-card" style="background:linear-gradient(135deg,#7b1d1d,#c0392b);">
+          <span class="kpi-icon">♻️</span>
+          <span class="kpi-num">3%</span>
+          <span class="kpi-label">taxa de reciclagem de e-lixo no Brasil</span>
+        </div>
+        <div class="kpi-card" style="background:linear-gradient(135deg,#7d4e00,#e67e22);">
+          <span class="kpi-icon">💰</span>
+          <span class="kpi-num">R$57bi</span>
+          <span class="kpi-label">valor dos materiais recuperáveis descartados/ano</span>
+        </div>
+      </div>
+
+      <!-- Gráficos -->
+      <div class="charts-grid fade-in">
+
+        <div class="chart-card">
+          <h3>🥧 Composição do Lixo Eletrônico</h3>
+          <p>Distribuição por categoria de equipamento – Global 2023</p>
+          <canvas id="graficoPizza" height="300"></canvas>
+        </div>
+
+        <div class="chart-card">
+          <h3>📈 Crescimento do E-lixo no Mundo</h3>
+          <p>Volume gerado vs. reciclado (milhões de toneladas)</p>
+          <canvas id="graficoBarras" height="300"></canvas>
+        </div>
+
+        <div class="chart-card">
+          <h3>📉 Taxa de Reciclagem: Mundo vs Brasil</h3>
+          <p>Evolução da taxa de reciclagem de lixo eletrônico ao longo dos anos</p>
+          <canvas id="graficoLinha" height="260"></canvas>
+        </div>
+
+        <div class="chart-card">
+          <h3>💎 Valor dos Materiais Recuperáveis</h3>
+          <p>Estimativa de valor por kg dos principais materiais (escala log)</p>
+          <canvas id="graficoMateriais" height="260"></canvas>
+        </div>
+
+      </div>
+
+      <!-- Fatos adicionais -->
+      <div class="fade-in" style="margin-top:3rem;">
+        <div class="section-tag">🔎 Você sabia?</div>
+        <h2 class="section-title" style="font-size:1.6rem;">Fatos sobre o lixo eletrônico</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-top:1.5rem;">
+          <div style="background:var(--cinza-claro);border-radius:var(--radius);padding:24px;border-left:4px solid var(--verde-vivo);">
+            <div style="font-size:2rem;margin-bottom:8px;">📱</div>
+            <h4 style="font-weight:700;margin-bottom:6px;font-size:0.95rem;">Celulares são os mais descartados</h4>
+            <p style="font-size:0.85rem;color:var(--texto-medio);line-height:1.6;">Mais de 5 bilhões de celulares são descartados por ano globalmente, sendo a maioria enterrada em aterros sem tratamento adequado.</p>
+          </div>
+          <div style="background:var(--cinza-claro);border-radius:var(--radius);padding:24px;border-left:4px solid var(--azul-claro);">
+            <div style="font-size:2rem;margin-bottom:8px;">⛏️</div>
+            <h4 style="font-weight:700;margin-bottom:6px;font-size:0.95rem;">Mineração urbana vale bilhões</h4>
+            <p style="font-size:0.85rem;color:var(--texto-medio);line-height:1.6;">Um quilo de celulares descartados contém mais ouro do que um quilo de minério extraído diretamente da natureza.</p>
+          </div>
+          <div style="background:var(--cinza-claro);border-radius:var(--radius);padding:24px;border-left:4px solid #e74c3c;">
+            <div style="font-size:2rem;margin-bottom:8px;">☠️</div>
+            <h4 style="font-weight:700;margin-bottom:6px;font-size:0.95rem;">Chumbo contamina por séculos</h4>
+            <p style="font-size:0.85rem;color:var(--texto-medio);line-height:1.6;">O chumbo de uma única bateria pode contaminar 600.000 litros de água — o equivalente ao consumo de uma pessoa por mais de 800 anos.</p>
+          </div>
+          <div style="background:var(--cinza-claro);border-radius:var(--radius);padding:24px;border-left:4px solid #f39c12;">
+            <div style="font-size:2rem;margin-bottom:8px;">🌱</div>
+            <h4 style="font-weight:700;margin-bottom:6px;font-size:0.95rem;">Reciclar economiza energia</h4>
+            <p style="font-size:0.85rem;color:var(--texto-medio);line-height:1.6;">Reciclar alumínio de eletrônicos gasta 95% menos energia do que extraí-lo da bauxita, reduzindo significativamente as emissões de CO₂.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="fade-in" style="background:linear-gradient(135deg,var(--verde-escuro),var(--azul-profundo));border-radius:var(--radius);padding:40px;text-align:center;margin-top:3rem;">
+        <div style="font-size:3rem;margin-bottom:1rem;">🌿</div>
+        <h3 style="font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:white;margin-bottom:0.75rem;">Faça parte da solução!</h3>
+        <p style="color:rgba(255,255,255,0.7);max-width:500px;margin:0 auto 1.5rem;line-height:1.7;">
+          Cada equipamento descartado corretamente faz diferença. Encontre o ponto de coleta mais próximo de você em São Borja e contribua para um futuro mais sustentável.
+        </p>
+        <a href="mapa.html" class="btn-primary" style="font-size:1rem;padding:14px 32px;">
+          📍 Ver pontos de descarte →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:36px;height:36px;background:linear-gradient(135deg,#2ecc71,#64b5f6);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;">♻️</div>
+          <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:#fff;">Descarte <span style="color:#2ecc71;">Consciente</span></span>
+        </div>
+        <p>Projeto comunitário educativo sobre o descarte correto de lixo eletrônico em São Borja, Rio Grande do Sul.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Páginas</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="mapa.html">Pontos de Descarte</a></li>
+          <li><a href="noticias.html">Notícias</a></li>
+          <li><a href="estatisticas.html">Estatísticas</a></li>
+          <li><a href="sobre.html">Sobre o Projeto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Fontes</h4>
+        <ul>
+          <li><a href="https://www.itu.int" target="_blank">ITU – Global E-waste Monitor</a></li>
+          <li><a href="https://www.greenpeace.org.br" target="_blank">Greenpeace Brasil</a></li>
+          <li><a href="https://www.mma.gov.br" target="_blank">Ministério do Meio Ambiente</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Descarte Consciente – São Borja RS · Educação Ambiental</span>
+      <div class="eco-badge">🌿 Projeto Comunitário Sustentável</div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/graficos.js"></script>
+<script>
+function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
