@@ -5,222 +5,271 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Descarte Consciente – Lixo Eletrônico em São Borja</title>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♻️</text></svg>">
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">
-    <div class="nav-logo-icon">♻️</div>
-    <span class="nav-logo-text">Descarte <span>Consciente</span></span>
-  </a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="mapa.html">Pontos de Descarte</a></li>
-    <li><a href="noticias.html">Notícias</a></li>
-    <li><a href="estatisticas.html">Estatísticas</a></li>
-    <li><a href="sobre.html">Sobre</a></li>
-  </ul>
-  <button class="nav-hamburger" onclick="toggleNav()" id="hamburger">☰</button>
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">♻️</div>
+      Descarte Consciente
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="mapa.html">Pontos de Descarte</a></li>
+      <li><a href="noticias.html">Notícias</a></li>
+      <li><a href="estatisticas.html">Estatísticas</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="admin.html" style="background:rgba(61,220,132,0.15);border:1px solid rgba(61,220,132,0.3);border-radius:6px;padding:6px 12px;color:var(--verde-vivo)!important;font-size:.82rem!important;font-weight:700!important;">⚙️ Admin</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
 </nav>
 
-<div class="page-wrapper">
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-grid"></div>
-    <div class="hero-content">
-      <div class="hero-text">
-        <div class="hero-badge">🌿 São Borja – RS</div>
-        <h1 class="hero-title">
-          Descarte<br>
-          <span class="highlight">Consciente</span>
-          <br>Lixo Eletrônico
-        </h1>
-        <p class="hero-desc">
-          Saiba como descartar corretamente seus equipamentos eletrônicos,
-          proteja o meio ambiente e contribua para uma São Borja mais sustentável.
-        </p>
-        <div class="hero-buttons">
-          <a href="mapa.html" class="btn-primary">📍 Ver Pontos de Descarte</a>
-          <a href="estatisticas.html" class="btn-secondary">📊 Ver Estatísticas</a>
-        </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-badge">♻️ São Borja · RS · Brasil</div>
+      <h1 class="hero-title">
+        Descarte<br>
+        <span class="accent">Consciente</span><br>
+        Lixo Eletrônico
+      </h1>
+      <p class="hero-desc">
+        Saiba como descartar corretamente equipamentos eletrônicos em São Borja. 
+        Proteja o meio ambiente e contribua com uma cidade mais sustentável.
+      </p>
+      <div class="hero-btns">
+        <a href="mapa.html" class="btn-primary">🗺️ Ver Pontos de Descarte</a>
+        <a href="estatisticas.html" class="btn-secondary">📊 Ver Estatísticas</a>
       </div>
-      <div class="hero-visual">
-        <div class="hero-img-wrap">
-          <div style="width:100%;height:420px;background:linear-gradient(135deg,#1a6b35,#0a2540);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;">
-            <div style="font-size:5rem;">♻️</div>
-            <div style="font-size:3rem;">💻📱🖥️</div>
-            <p style="color:rgba(255,255,255,0.6);font-size:0.85rem;text-align:center;padding:0 2rem;">Descarte correto protege nosso meio ambiente</p>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-visual-card">
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="num">62M</span>
+            <span class="label">Toneladas/ano no mundo</span>
           </div>
-          <div class="hero-img-overlay"></div>
-        </div>
-        <div class="hero-stat-cards">
-          <div class="stat-bubble">
-            <span class="num">53.6M</span>
-            <span class="label">ton/ano no mundo</span>
-          </div>
-          <div class="stat-bubble" style="animation-delay:-1s;">
+          <div class="hero-stat">
             <span class="num">3%</span>
-            <span class="label">reciclado no BR</span>
+            <span class="label">Taxa de reciclagem no Brasil</span>
           </div>
+          <div class="hero-stat">
+            <span class="num">2,1M</span>
+            <span class="label">Ton. geradas no Brasil/ano</span>
+          </div>
+          <div class="hero-stat">
+            <span class="num">50+</span>
+            <span class="label">Substâncias tóxicas presentes</span>
+          </div>
+        </div>
+        <div class="items-grid">
+          <div class="item-chip"><span class="chip-icon">📱</span>Celulares</div>
+          <div class="item-chip"><span class="chip-icon">💻</span>Computadores</div>
+          <div class="item-chip"><span class="chip-icon">📺</span>TVs</div>
+          <div class="item-chip"><span class="chip-icon">🔋</span>Pilhas</div>
+          <div class="item-chip"><span class="chip-icon">🔌</span>Cabos</div>
+          <div class="item-chip"><span class="chip-icon">🖨️</span>Impressoras</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- O QUE É LIXO ELETRÔNICO -->
-  <section class="o-que-e">
-    <div class="section-inner">
-      <div class="oque-grid">
-        <div class="fade-in">
-          <div class="section-tag">🔍 Entenda</div>
-          <h2 class="section-title">O que é<br>lixo eletrônico?</h2>
-          <p class="section-subtitle">
-            Lixo eletrônico (ou e-lixo) é qualquer equipamento elétrico ou eletrônico descartado,
-            abandonado ou que parou de funcionar. Inclui todos esses itens:
-          </p>
-          <div class="exemplos-grid">
-            <div class="exemplo-item"><span class="icon">📱</span><span class="name">Celulares</span></div>
-            <div class="exemplo-item"><span class="icon">💻</span><span class="name">Computadores</span></div>
-            <div class="exemplo-item"><span class="icon">📺</span><span class="name">TVs</span></div>
-            <div class="exemplo-item"><span class="icon">🔋</span><span class="name">Pilhas</span></div>
-            <div class="exemplo-item"><span class="icon">🔌</span><span class="name">Carregadores</span></div>
-            <div class="exemplo-item"><span class="icon">🖨️</span><span class="name">Impressoras</span></div>
-            <div class="exemplo-item"><span class="icon">🎮</span><span class="name">Videogames</span></div>
-            <div class="exemplo-item"><span class="icon">🏠</span><span class="name">Eletrodomésticos</span></div>
-          </div>
+<!-- O QUE É LIXO ELETRÔNICO -->
+<section style="background: #fff;">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag">Educação Ambiental</span>
+      <h2 class="section-title">O que é Lixo Eletrônico?</h2>
+      <p class="section-desc">
+        Lixo eletrônico, ou e-lixo, são equipamentos eletroeletrônicos descartados após o fim de sua vida útil.
+      </p>
+    </div>
+    <div class="cards-grid">
+      <div class="card fade-in">
+        <div class="card-icon">📱</div>
+        <h3>Dispositivos Móveis</h3>
+        <p>Celulares, tablets, smartphones e seus acessórios como carregadores, fones e cabos USB.</p>
+      </div>
+      <div class="card fade-in">
+        <div class="card-icon">💻</div>
+        <h3>Computadores</h3>
+        <p>Desktops, notebooks, monitores, teclados, mouses, HDs e componentes eletrônicos em geral.</p>
+      </div>
+      <div class="card fade-in">
+        <div class="card-icon">📺</div>
+        <h3>Eletrodomésticos</h3>
+        <p>Televisores, geladeiras, micro-ondas, máquinas de lavar, rádios, aparelhos de som e DVD.</p>
+      </div>
+      <div class="card fade-in">
+        <div class="card-icon">🔋</div>
+        <h3>Pilhas e Baterias</h3>
+        <p>Pilhas alcalinas, baterias de celular, baterias de notebook e de veículos elétricos.</p>
+      </div>
+      <div class="card fade-in">
+        <div class="card-icon">🖨️</div>
+        <h3>Periféricos e Escritório</h3>
+        <p>Impressoras, scanners, roteadores, telefones fixos, calculadoras e equipamentos de escritório.</p>
+      </div>
+      <div class="card fade-in">
+        <div class="card-icon">💡</div>
+        <h3>Iluminação</h3>
+        <p>Lâmpadas fluorescentes, lâmpadas LED, reatores e outros dispositivos de iluminação elétrica.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACTOS AMBIENTAIS -->
+<section class="impactos-section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag">⚠️ Atenção</span>
+      <h2 class="section-title">Por que não jogar no lixo comum?</h2>
+      <p class="section-desc">O descarte incorreto de eletrônicos causa danos sérios ao meio ambiente e à saúde humana.</p>
+    </div>
+    <div class="cards-grid">
+      <div class="impacto-card fade-in">
+        <div class="impacto-icon">☠️</div>
+        <div>
+          <h3>Metais Pesados Tóxicos</h3>
+          <p>Chumbo, mercúrio, cádmio e arsênio presentes em circuitos contaminam o solo e os lençóis freáticos quando depositados em aterros comuns.</p>
         </div>
-        <div class="fade-in">
-          <div class="section-tag" style="margin-top:0">⚠️ Por que importa?</div>
-          <h2 class="section-title" style="font-size:1.6rem;">Impactos do descarte incorreto</h2>
-          <div class="impacto-cards">
-            <div class="impacto-card danger">
-              <span class="ic">☠️</span>
-              <div>
-                <h4>Contaminação do Solo</h4>
-                <p>Metais como chumbo, mercúrio e cádmio presentes nos eletrônicos contaminam o solo por décadas, tornando-o impróprio para agricultura e moradia.</p>
-              </div>
-            </div>
-            <div class="impacto-card warning">
-              <span class="ic">💧</span>
-              <div>
-                <h4>Contaminação da Água</h4>
-                <p>Substâncias tóxicas infiltram no lençol freático, contaminando rios e aquíferos que abastecem nossa cidade com água potável.</p>
-              </div>
-            </div>
-            <div class="impacto-card">
-              <span class="ic">🌍</span>
-              <div>
-                <h4>Recursos Valiosos Perdidos</h4>
-                <p>Ouro, prata, cobre e outros metais preciosos podem ser recuperados e reutilizados, gerando empregos e reduzindo extração mineral.</p>
-              </div>
-            </div>
-          </div>
+      </div>
+      <div class="impacto-card fade-in">
+        <div class="impacto-icon">💧</div>
+        <div>
+          <h3>Contaminação da Água</h3>
+          <p>Substâncias tóxicas infiltram-se no solo e chegam aos rios e aquíferos, comprometendo o abastecimento de água potável para comunidades inteiras.</p>
+        </div>
+      </div>
+      <div class="impacto-card fade-in">
+        <div class="impacto-icon">🌱</div>
+        <div>
+          <h3>Degradação do Solo</h3>
+          <p>A contaminação do solo impede o crescimento de plantas e destrói ecossistemas locais, prejudicando agricultura e a biodiversidade regional.</p>
+        </div>
+      </div>
+      <div class="impacto-card fade-in">
+        <div class="impacto-icon">🫁</div>
+        <div>
+          <h3>Risco à Saúde</h3>
+          <p>A exposição a metais pesados pode causar danos neurológicos, problemas respiratórios, doenças renais e aumentar o risco de câncer.</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- COMO DESCARTAR CORRETAMENTE -->
-  <section class="como-descartar">
-    <div class="section-inner">
-      <div class="fade-in" style="text-align:center;margin-bottom:3rem;">
-        <div class="section-tag" style="display:inline-flex;">✅ Guia Prático</div>
-        <h2 class="section-title">Como descartar corretamente</h2>
-        <p class="section-subtitle" style="margin:0 auto;">
-          Siga esses passos simples para garantir que seus eletrônicos sejam descartados de forma segura e responsável.
-        </p>
+<!-- COMO DESCARTAR -->
+<section class="como-section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag" style="background:rgba(61,220,132,0.15);color:var(--verde-vivo)">✅ Passo a Passo</span>
+      <h2 class="section-title" style="color:#fff">Como Descartar Corretamente</h2>
+      <p class="section-desc" style="color:rgba(240,250,245,0.65)">Siga estes passos simples para garantir o descarte responsável dos seus eletrônicos.</p>
+    </div>
+    <div class="steps">
+      <div class="step fade-in">
+        <div class="step-num">01</div>
+        <h3>Identifique o equipamento</h3>
+        <p>Verifique se o item é considerado lixo eletrônico: aparelhos com tomada, pilhas ou bateria se enquadram.</p>
       </div>
-      <div class="passos-grid fade-in">
-        <div class="passo-card">
-          <div class="passo-num">1</div>
-          <h3>🗂️ Separe e organize</h3>
-          <p>Guarde os equipamentos eletrônicos separados do lixo comum. Use caixas ou sacolas identificadas.</p>
-        </div>
-        <div class="passo-card">
-          <div class="passo-num">2</div>
-          <h3>🔒 Apague seus dados</h3>
-          <p>Antes de descartar celulares e computadores, faça um reset de fábrica para proteger suas informações pessoais.</p>
-        </div>
-        <div class="passo-card">
-          <div class="passo-num">3</div>
-          <h3>📍 Leve ao ponto certo</h3>
-          <p>Consulte o mapa do site e leve seus eletrônicos ao ponto de coleta mais próximo de você em São Borja.</p>
-        </div>
-        <div class="passo-card">
-          <div class="passo-num">4</div>
-          <h3>🔋 Pilhas e baterias</h3>
-          <p>Atenção especial! Pilhas e baterias são altamente tóxicas. Leve-as a supermercados, farmácias ou pontos específicos de coleta.</p>
-        </div>
-        <div class="passo-card">
-          <div class="passo-num">5</div>
-          <h3>🤝 Doe se possível</h3>
-          <p>Equipamentos que ainda funcionam podem ser doados para escolas, ONG's e famílias que precisam de acesso à tecnologia.</p>
-        </div>
-        <div class="passo-card">
-          <div class="passo-num">6</div>
-          <h3>📢 Divulgue!</h3>
-          <p>Compartilhe essas informações com vizinhos, amigos e familiares. Cada pessoa consciente faz diferença para São Borja.</p>
-        </div>
+      <div class="step fade-in">
+        <div class="step-num">02</div>
+        <h3>Apague seus dados</h3>
+        <p>Antes de descartar celulares e computadores, faça o backup e restaure as configurações de fábrica.</p>
       </div>
-
-      <div class="fade-in" style="text-align:center;margin-top:3rem;">
-        <a href="mapa.html" class="btn-primary" style="font-size:1rem;padding:16px 36px;">
-          📍 Encontrar ponto de descarte →
-        </a>
+      <div class="step fade-in">
+        <div class="step-num">03</div>
+        <h3>Separe e embale</h3>
+        <p>Separe os equipamentos do lixo comum. Embale com cuidado para evitar acidentes no transporte.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">04</div>
+        <h3>Leve ao ponto de coleta</h3>
+        <p>Entregue no ponto de coleta mais próximo. Confira os locais disponíveis em São Borja no nosso mapa.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">05</div>
+        <h3>Acompanhe campanhas</h3>
+        <p>Fique atento às campanhas da Prefeitura de São Borja para coleta especial de eletrônicos.</p>
       </div>
     </div>
-  </section>
+    <div style="text-align:center;margin-top:40px">
+      <a href="mapa.html" class="btn-primary">🗺️ Ver Pontos de Descarte em São Borja</a>
+    </div>
+  </div>
+</section>
 
-</div>
+<!-- CTA FINAL -->
+<section style="background:#fff; text-align:center; padding:64px 24px;">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-tag">🤝 Comunidade</span>
+      <h2 class="section-title">Faça parte da mudança</h2>
+      <p class="section-desc" style="margin-bottom:32px">
+        Cada eletrônico descartado corretamente é um passo para uma São Borja mais sustentável. 
+        Compartilhe esse conhecimento com sua família e vizinhos.
+      </p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="noticias.html" class="btn-primary">📰 Ver Notícias</a>
+        <a href="sobre.html" class="btn-secondary">ℹ️ Sobre o Projeto</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div style="display:flex;align-items:center;gap:10px;">
-          <div style="width:36px;height:36px;background:linear-gradient(135deg,#2ecc71,#64b5f6);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;">♻️</div>
-          <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:#fff;">Descarte <span style="color:#2ecc71;">Consciente</span></span>
-        </div>
-        <p>Projeto comunitário educativo sobre o descarte correto de lixo eletrônico em São Borja, Rio Grande do Sul.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Páginas</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="mapa.html">Pontos de Descarte</a></li>
-          <li><a href="noticias.html">Notícias</a></li>
-          <li><a href="estatisticas.html">Estatísticas</a></li>
-          <li><a href="sobre.html">Sobre o Projeto</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contato</h4>
-        <ul>
-          <li><a href="#">📧 contato@descarteconsciente.org</a></li>
-          <li><a href="#">🏛️ Secretaria de Meio Ambiente</a></li>
-          <li><a href="https://www.saoborja.rs.gov.br" target="_blank">🌐 saoborja.rs.gov.br</a></li>
-        </ul>
-      </div>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <h3>♻️ Descarte Consciente</h3>
+      <p>Portal comunitário educativo sobre descarte correto de lixo eletrônico em São Borja – RS. Juntos por uma cidade mais sustentável.</p>
     </div>
-    <div class="footer-bottom">
-      <span>© 2025 Descarte Consciente – São Borja RS · Educação Ambiental</span>
-      <div class="eco-badge">🌿 Projeto Comunitário Sustentável</div>
+    <div class="footer-links">
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="mapa.html">Pontos de Descarte</a></li>
+        <li><a href="noticias.html">Notícias</a></li>
+        <li><a href="estatisticas.html">Estatísticas</a></li>
+        <li><a href="sobre.html">Sobre o Projeto</a></li>
+      </ul>
     </div>
+    <div class="footer-contato">
+      <h4>Informações</h4>
+      <p>📍 São Borja – RS, Brasil</p>
+      <p>🌿 Educação Ambiental</p>
+      <p>🏛️ Iniciativa Comunitária</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Descarte Consciente – Projeto comunitário · São Borja RS</span>
+    <span>Educação ambiental para todos</span>
   </div>
 </footer>
 
 <script>
-  function toggleNav() {
-    document.getElementById('navLinks').classList.toggle('open');
-  }
-  // Fade-in on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+function toggleMenu() {
+  document.querySelector('.nav-links').classList.toggle('open');
+}
+// Fade-in on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
+
 </body>
 </html>
