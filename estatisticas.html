@@ -6,109 +6,79 @@
   <title>Estatísticas – Descarte Consciente São Borja</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* ── Estatísticas: estilos próprios ── */
-
-    /* Números de destaque — fundo branco com borda colorida */
+    /* Números de destaque */
     .numeros-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
       gap: 16px;
-      margin-bottom: 56px;
+      margin-bottom: 52px;
     }
     .numero-card {
       background: #fff;
       border: 1px solid var(--cinza-medio);
-      border-radius: 16px;
-      padding: 24px 20px;
-      text-align: center;
       border-top: 4px solid var(--verde-claro);
+      border-radius: 14px;
+      padding: 22px 18px;
+      text-align: center;
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .numero-card:nth-child(2) { border-top-color: var(--azul-claro); }
     .numero-card:nth-child(3) { border-top-color: #c45e1a; }
     .numero-card:nth-child(4) { border-top-color: #d4900a; }
     .numero-card:nth-child(5) { border-top-color: var(--verde-medio); }
-    .numero-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 28px var(--sombra);
-    }
+    .numero-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px var(--sombra); }
     .numero-val {
       font-family: 'Syne', sans-serif;
-      font-size: 2.4rem;
-      font-weight: 800;
-      color: var(--verde-escuro);
-      line-height: 1;
-      display: block;
-      margin-bottom: 8px;
+      font-size: 2.2rem; font-weight: 800;
+      color: var(--verde-escuro); line-height: 1;
+      display: block; margin-bottom: 8px;
     }
     .numero-label {
-      font-size: 0.82rem;
-      color: var(--cinza-sub);
-      font-weight: 400;
-      line-height: 1.4;
+      font-size: 0.82rem; color: var(--cinza-sub);
+      font-weight: 400; line-height: 1.4;
     }
 
-    /* Grid de gráficos */
+    /* Gráficos */
     .graficos-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-bottom: 56px;
+      gap: 22px;
+      margin-bottom: 52px;
     }
     .grafico-card {
       background: #fff;
       border: 1px solid var(--cinza-medio);
       border-radius: 18px;
-      padding: 28px;
-      /* SEM fade-in aqui — Chart.js precisa do canvas visível */
+      padding: 26px;
     }
-    .grafico-card.full {
-      grid-column: 1 / -1;
-    }
+    .grafico-card.full { grid-column: 1 / -1; }
     .grafico-titulo {
       font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1rem;
-      color: var(--verde-escuro);
-      margin-bottom: 4px;
+      font-weight: 800; font-size: 0.97rem;
+      color: var(--verde-escuro); margin-bottom: 3px;
     }
-    .grafico-subtitulo {
-      font-size: 0.82rem;
-      color: var(--cinza-sub);
-      margin-bottom: 20px;
-      font-weight: 400;
+    .grafico-sub {
+      font-size: 0.81rem; color: var(--cinza-sub);
+      margin-bottom: 18px; font-weight: 400;
     }
-    .grafico-canvas-wrap {
-      position: relative;
-      width: 100%;
-    }
+    /* altura fixa para cada canvas — Chart.js precisa de contêiner com dimensão */
+    .grafico-wrap { position: relative; height: 260px; }
+    .grafico-wrap.tall  { height: 300px; }
+    .grafico-wrap.short { height: 220px; }
 
-    /* Seção de contexto */
-    .contexto-section {
+    /* Contexto */
+    .contexto-box {
       background: var(--cinza-claro);
-      border-radius: 20px;
-      padding: 36px;
-      margin-bottom: 0;
-    }
-    .contexto-section .section-header {
-      margin-bottom: 28px;
+      border-radius: 20px; padding: 36px;
     }
 
-    @media (max-width: 780px) {
-      .graficos-grid {
-        grid-template-columns: 1fr;
-      }
-      .grafico-card.full {
-        grid-column: 1;
-      }
-      .numeros-grid {
-        grid-template-columns: 1fr 1fr;
-      }
+    @media (max-width: 760px) {
+      .graficos-grid { grid-template-columns: 1fr; }
+      .grafico-card.full { grid-column: 1; }
+      .numeros-grid { grid-template-columns: 1fr 1fr; }
     }
-    @media (max-width: 460px) {
-      .numeros-grid {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 440px) {
+      .numeros-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -140,10 +110,10 @@
 <section>
   <div class="container">
 
-    <!-- NÚMEROS DE DESTAQUE -->
+    <!-- NÚMEROS -->
     <div class="section-header fade-in">
-      <span class="section-tag">📊 Panorama Global</span>
-      <h2 class="section-title">O lixo eletrônico em números</h2>
+      <span class="section-tag">📊 Panorama</span>
+      <h2 class="section-title">O e-lixo em números</h2>
       <p class="section-desc">Dados do Global E-waste Monitor 2024 e do ABREE.</p>
     </div>
 
@@ -162,7 +132,7 @@
       </div>
       <div class="numero-card fade-in">
         <span class="numero-val">5º</span>
-        <span class="numero-label">Posição do Brasil entre maiores geradores mundiais</span>
+        <span class="numero-label">Posição do Brasil entre os maiores geradores</span>
       </div>
       <div class="numero-card fade-in">
         <span class="numero-val">57</span>
@@ -170,8 +140,8 @@
       </div>
     </div>
 
-    <!-- GRÁFICOS — sem classe fade-in nos cards para o Chart.js funcionar -->
-    <div class="section-header fade-in" style="margin-top:8px;">
+    <!-- GRÁFICOS — sem fade-in, altura fixa em cada .grafico-wrap -->
+    <div class="section-header fade-in">
       <span class="section-tag">📈 Visualizações</span>
       <h2 class="section-title">Gráficos e tendências</h2>
     </div>
@@ -180,40 +150,40 @@
 
       <div class="grafico-card">
         <div class="grafico-titulo">Composição do Lixo Eletrônico</div>
-        <div class="grafico-subtitulo">Distribuição por categoria no Brasil (%)</div>
-        <div class="grafico-canvas-wrap">
+        <div class="grafico-sub">Distribuição por categoria no Brasil (%)</div>
+        <div class="grafico-wrap">
           <canvas id="graficoPizza"></canvas>
         </div>
       </div>
 
       <div class="grafico-card">
-        <div class="grafico-titulo">Crescimento no Brasil por Ano</div>
-        <div class="grafico-subtitulo">Volume gerado em milhões de toneladas</div>
-        <div class="grafico-canvas-wrap">
+        <div class="grafico-titulo">Crescimento no Brasil</div>
+        <div class="grafico-sub">Volume gerado por ano (milhões de toneladas)</div>
+        <div class="grafico-wrap">
           <canvas id="graficoBarras"></canvas>
         </div>
       </div>
 
       <div class="grafico-card">
         <div class="grafico-titulo">Taxa de Reciclagem: Brasil vs. Mundo</div>
-        <div class="grafico-subtitulo">Percentual de e-lixo reciclado por país/região</div>
-        <div class="grafico-canvas-wrap">
+        <div class="grafico-sub">Percentual de e-lixo reciclado por país</div>
+        <div class="grafico-wrap tall">
           <canvas id="graficoReciclagem"></canvas>
         </div>
       </div>
 
       <div class="grafico-card">
         <div class="grafico-titulo">Crescimento Global do E-Lixo</div>
-        <div class="grafico-subtitulo">Evolução e projeção mundial (milhões de toneladas)</div>
-        <div class="grafico-canvas-wrap">
+        <div class="grafico-sub">Evolução e projeção mundial (milhões de toneladas)</div>
+        <div class="grafico-wrap">
           <canvas id="graficoLinha"></canvas>
         </div>
       </div>
 
       <div class="grafico-card full">
         <div class="grafico-titulo">Materiais Recuperáveis no E-Lixo</div>
-        <div class="grafico-subtitulo">Percentual de cada material na composição total — todos podem ser reciclados</div>
-        <div class="grafico-canvas-wrap" style="max-height:240px;">
+        <div class="grafico-sub">Percentual de cada material na composição — todos podem ser reciclados</div>
+        <div class="grafico-wrap short">
           <canvas id="graficoMateriais"></canvas>
         </div>
       </div>
@@ -221,7 +191,7 @@
     </div>
 
     <!-- CONTEXTO -->
-    <div class="contexto-section fade-in">
+    <div class="contexto-box fade-in">
       <div class="section-header" style="margin-bottom:28px;">
         <span class="section-tag">📖 Contexto</span>
         <h2 class="section-title">O que esses dados significam?</h2>
@@ -235,17 +205,17 @@
         <div class="card">
           <div class="card-icon">🇧🇷</div>
           <h3>Brasil em Números</h3>
-          <p>O Brasil gera 2,1 milhões de toneladas de e-lixo por ano, mas recicla menos de 3%. A maioria dos equipamentos termina em aterros comuns, contaminando o ambiente.</p>
+          <p>O Brasil gera 2,1 milhões de toneladas de e-lixo por ano, mas recicla menos de 3%. A maioria termina em aterros comuns, contaminando o ambiente.</p>
         </div>
         <div class="card">
           <div class="card-icon">💰</div>
           <h3>Valor Econômico</h3>
-          <p>O e-lixo contém ouro, prata, cobre, platina e outros materiais valiosos. O valor dos materiais recuperáveis é estimado em US$ 62 bilhões por ano no mundo.</p>
+          <p>O e-lixo contém ouro, prata, cobre e platina. O valor dos materiais recuperáveis é estimado em US$ 62 bilhões por ano no mundo inteiro.</p>
         </div>
         <div class="card">
           <div class="card-icon">⚖️</div>
           <h3>Legislação</h3>
-          <p>A Lei 12.305/2010 (Política Nacional de Resíduos Sólidos) obriga fabricantes a implementarem logística reversa para eletrônicos no Brasil.</p>
+          <p>A Lei 12.305/2010 obriga fabricantes a implementar logística reversa para eletrônicos no Brasil — mas o cumprimento ainda é parcial.</p>
         </div>
       </div>
     </div>
@@ -282,19 +252,166 @@
   </div>
 </footer>
 
+<!-- Chart.js carregado ANTES do script inline -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
-<script src="js/graficos.js"></script>
 <script>
 function toggleMenu() {
   document.querySelector('.nav-links').classList.toggle('open');
 }
-// Fade-in apenas nos elementos que NÃO contêm canvas
-var observer = new IntersectionObserver(function(entries) {
+
+/* Fade-in só nos elementos sem canvas */
+var obs = new IntersectionObserver(function(entries) {
   entries.forEach(function(e, i) {
-    if (e.isIntersecting) setTimeout(function(){ e.target.classList.add('visible'); }, i * 80);
+    if (e.isIntersecting) setTimeout(function(){ e.target.classList.add('visible'); }, i * 70);
   });
 }, { threshold: 0.05 });
-document.querySelectorAll('.fade-in').forEach(function(el){ observer.observe(el); });
+document.querySelectorAll('.fade-in').forEach(function(el){ obs.observe(el); });
+
+/* ── Paleta ── */
+var COR = {
+  verdeEscuro : '#0a3d2b',
+  verdeMedio  : '#1a6b47',
+  verde       : '#1e8f5e',
+  verdeVivo   : '#3ddc84',
+  azul        : '#1a6fa8',
+  azulCeu     : '#5bc8f5',
+  laranja     : '#c45e1a',
+  amarelo     : '#d4900a',
+  texto       : '#3d5c48'
+};
+
+/* Defaults globais */
+Chart.defaults.font.family = "'DM Sans', sans-serif";
+Chart.defaults.font.size   = 12;
+Chart.defaults.color       = COR.texto;
+
+function escala() {
+  return { grid: { color: 'rgba(0,0,0,0.06)' }, ticks: { color: COR.texto } };
+}
+function semGrid() {
+  return { grid: { display: false }, ticks: { color: COR.texto } };
+}
+
+/* Inicializa gráficos após o browser pintar o layout */
+window.addEventListener('load', function() {
+  setTimeout(function() { initGraficos(); }, 80);
+});
+
+function initGraficos() {
+
+  /* 1. DONUT */
+  new Chart(document.getElementById('graficoPizza'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Eletrodomésticos','Equipamentos TI','Telas','Telecom','Pequenos','Outros'],
+      datasets: [{
+        data: [35, 25, 18, 12, 7, 3],
+        backgroundColor: [COR.verde, COR.azul, COR.verdeVivo, COR.azulCeu, COR.amarelo, '#b0c8ba'],
+        borderWidth: 2, borderColor: '#fff', hoverOffset: 10
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      cutout: '60%',
+      plugins: {
+        legend: { position: 'bottom', labels: { padding: 14, boxWidth: 13 } },
+        tooltip: { callbacks: { label: function(c){ return '  '+c.label+': '+c.parsed+'%'; } } }
+      }
+    }
+  });
+
+  /* 2. BARRAS crescimento Brasil */
+  new Chart(document.getElementById('graficoBarras'), {
+    type: 'bar',
+    data: {
+      labels: ['2015','2016','2017','2018','2019','2020','2021','2022','2023'],
+      datasets: [{
+        label: 'Mt',
+        data: [1.4, 1.5, 1.6, 1.7, 1.8, 1.85, 1.9, 2.0, 2.1],
+        backgroundColor: ['#1a8a5a','#1a8f5e','#1e9562','#22a068','#26a86e','#2aaf74','#2eb87a','#33c080','#3ddc84'],
+        borderRadius: 6, borderSkipped: false
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(c){ return '  '+c.parsed.y+'M ton.'; } } } },
+      scales: {
+        y: Object.assign(escala(), { beginAtZero: false, min: 1.2, ticks: { color: COR.texto, callback: function(v){ return v+'M'; } } }),
+        x: semGrid()
+      }
+    }
+  });
+
+  /* 3. BARRAS HORIZONTAIS reciclagem */
+  new Chart(document.getElementById('graficoReciclagem'), {
+    type: 'bar',
+    data: {
+      labels: ['Noruega','Suíça','U. Europeia','Japão','EUA','Mundo','China','Brasil'],
+      datasets: [{
+        label: '% Reciclado',
+        data: [74, 72, 48, 38, 15, 22, 10, 3],
+        backgroundColor: [COR.verdeVivo, COR.verdeVivo, COR.verde, COR.verde, COR.azulCeu, COR.amarelo, COR.azul, COR.laranja],
+        borderRadius: 5, borderSkipped: false
+      }]
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(c){ return '  '+c.parsed.x+'% reciclado'; } } } },
+      scales: {
+        x: Object.assign(escala(), { max: 80, ticks: { color: COR.texto, callback: function(v){ return v+'%'; } } }),
+        y: semGrid()
+      }
+    }
+  });
+
+  /* 4. LINHA crescimento global */
+  new Chart(document.getElementById('graficoLinha'), {
+    type: 'line',
+    data: {
+      labels: ['2014','2016','2018','2019','2021','2022','2023','2024*','2030*'],
+      datasets: [{
+        label: 'Mt',
+        data: [44.7, 47.8, 50.0, 53.6, 57.4, 59.4, 62.0, 64.5, 82.0],
+        borderColor: COR.verdeVivo,
+        backgroundColor: 'rgba(61,220,132,0.10)',
+        borderWidth: 2.5,
+        pointBackgroundColor: COR.verdeVivo,
+        pointBorderColor: '#fff', pointBorderWidth: 2,
+        pointRadius: 5, tension: 0.35, fill: true
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(c){ return '  '+c.parsed.y+'Mt'; } } } },
+      scales: {
+        y: Object.assign(escala(), { ticks: { color: COR.texto, callback: function(v){ return v+'Mt'; } } }),
+        x: semGrid()
+      }
+    }
+  });
+
+  /* 5. BARRAS materiais */
+  new Chart(document.getElementById('graficoMateriais'), {
+    type: 'bar',
+    data: {
+      labels: ['Ferro/Aço','Plásticos','Outros Metais','Cobre','Alumínio','Ouro/Prata','Vidro'],
+      datasets: [{
+        label: '% composição',
+        data: [47, 21, 13, 7, 5, 3, 4],
+        backgroundColor: [COR.azul, COR.verde, COR.amarelo, COR.laranja, COR.azulCeu, '#d4af00', '#7ab8a0'],
+        borderRadius: 7, borderSkipped: false
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(c){ return '  '+c.parsed.y+'%'; } } } },
+      scales: {
+        y: Object.assign(escala(), { ticks: { color: COR.texto, callback: function(v){ return v+'%'; } } }),
+        x: semGrid()
+      }
+    }
+  });
+}
 </script>
 </body>
 </html>
