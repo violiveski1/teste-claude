@@ -5,262 +5,256 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Notícias – Descarte Consciente São Borja</title>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📰</text></svg>">
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">
-    <div class="nav-logo-icon">♻️</div>
-    <span class="nav-logo-text">Descarte <span>Consciente</span></span>
-  </a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="mapa.html">Pontos de Descarte</a></li>
-    <li><a href="noticias.html" class="active">Notícias</a></li>
-    <li><a href="estatisticas.html">Estatísticas</a></li>
-    <li><a href="sobre.html">Sobre</a></li>
-  </ul>
-  <button class="nav-hamburger" onclick="toggleNav()">☰</button>
-</nav>
-
-<div class="page-wrapper">
-
-  <div class="page-header">
-    <div class="page-header-inner">
-      <div class="page-header-tag">📰 Últimas Notícias</div>
-      <h1>Notícias e Campanhas</h1>
-      <p>Fique por dentro das ações ambientais, campanhas de coleta e sustentabilidade em São Borja</p>
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">♻️</div>
+      Descarte Consciente
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="mapa.html">Pontos de Descarte</a></li>
+      <li><a href="noticias.html" class="active">Notícias</a></li>
+      <li><a href="estatisticas.html">Estatísticas</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="admin.html" style="background:rgba(61,220,132,0.15);border:1px solid rgba(61,220,132,0.3);border-radius:6px;padding:6px 12px;color:var(--verde-vivo)!important;font-size:.82rem!important;font-weight:700!important;">⚙️ Admin</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
     </div>
   </div>
+</nav>
 
-  <section class="noticias-section">
-    <div class="section-inner">
-
-      <!-- Busca e Filtros -->
-      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;align-items:flex-end;margin-bottom:2.5rem;">
-        <div class="search-bar-wrap" style="margin-bottom:0;flex:1;min-width:260px;">
-          <span class="search-icon">🔍</span>
-          <input type="text" class="search-bar" id="searchInput" placeholder="Buscar notícias..." oninput="filtrarNoticias()">
-        </div>
-        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-          <button class="filtro-cat active" data-cat="todas" onclick="filtrarCategoria('todas')">Todas</button>
-          <button class="filtro-cat" data-cat="Campanha" onclick="filtrarCategoria('Campanha')">🎯 Campanhas</button>
-          <button class="filtro-cat" data-cat="Reciclagem" onclick="filtrarCategoria('Reciclagem')">♻️ Reciclagem</button>
-          <button class="filtro-cat" data-cat="Sustentabilidade" onclick="filtrarCategoria('Sustentabilidade')">🌿 Sustentabilidade</button>
-          <button class="filtro-cat" data-cat="Legislação" onclick="filtrarCategoria('Legislação')">⚖️ Legislação</button>
-        </div>
-      </div>
-
-      <!-- Grid de notícias -->
-      <div class="noticias-grid" id="noticiasGrid"></div>
-      <p id="semResultados" style="display:none;text-align:center;color:#666;padding:3rem;font-size:1.05rem;">
-        😕 Nenhuma notícia encontrada para "<span id="termoBusca"></span>"
-      </p>
-
-    </div>
-  </section>
-
+<div class="page-header">
+  <h1>Notícias & <span>Campanhas</span></h1>
+  <p>Fique por dentro das ações de reciclagem, meio ambiente e sustentabilidade em São Borja e no Brasil.</p>
 </div>
 
+<section>
+  <div class="container">
+    <!-- BARRA DE PESQUISA -->
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="🔍 Pesquisar notícias..." oninput="filtrarNoticias()">
+    </div>
+
+    <!-- FILTROS -->
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:36px;" id="filtros">
+      <button class="filtro-btn active" onclick="filtrarCategoria('todas', this)">Todas</button>
+      <button class="filtro-btn" onclick="filtrarCategoria('reciclagem', this)">♻️ Reciclagem</button>
+      <button class="filtro-btn" onclick="filtrarCategoria('campanha', this)">📢 Campanhas</button>
+      <button class="filtro-btn" onclick="filtrarCategoria('meio-ambiente', this)">🌿 Meio Ambiente</button>
+      <button class="filtro-btn" onclick="filtrarCategoria('sustentabilidade', this)">🌱 Sustentabilidade</button>
+    </div>
+
+    <div class="noticias-grid" id="noticias-grid"></div>
+
+    <div id="sem-resultados" style="display:none;text-align:center;padding:48px;color:#3d5c48;">
+      <div style="font-size:3rem;margin-bottom:12px;">🔍</div>
+      <p>Nenhuma notícia encontrada para "<span id="termo-pesquisa"></span>"</p>
+    </div>
+  </div>
+</section>
+
 <footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div style="display:flex;align-items:center;gap:10px;">
-          <div style="width:36px;height:36px;background:linear-gradient(135deg,#2ecc71,#64b5f6);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;">♻️</div>
-          <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:#fff;">Descarte <span style="color:#2ecc71;">Consciente</span></span>
-        </div>
-        <p>Projeto comunitário educativo sobre o descarte correto de lixo eletrônico em São Borja, Rio Grande do Sul.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Páginas</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="mapa.html">Pontos de Descarte</a></li>
-          <li><a href="noticias.html">Notícias</a></li>
-          <li><a href="estatisticas.html">Estatísticas</a></li>
-          <li><a href="sobre.html">Sobre o Projeto</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contato</h4>
-        <ul>
-          <li><a href="#">📧 contato@descarteconsciente.org</a></li>
-          <li><a href="#">🏛️ Secretaria de Meio Ambiente</a></li>
-          <li><a href="https://www.saoborja.rs.gov.br" target="_blank">🌐 saoborja.rs.gov.br</a></li>
-        </ul>
-      </div>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <h3>♻️ Descarte Consciente</h3>
+      <p>Portal comunitário educativo sobre descarte correto de lixo eletrônico em São Borja – RS.</p>
     </div>
-    <div class="footer-bottom">
-      <span>© 2025 Descarte Consciente – São Borja RS · Educação Ambiental</span>
-      <div class="eco-badge">🌿 Projeto Comunitário Sustentável</div>
+    <div class="footer-links">
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="mapa.html">Pontos de Descarte</a></li>
+        <li><a href="noticias.html">Notícias</a></li>
+        <li><a href="estatisticas.html">Estatísticas</a></li>
+        <li><a href="sobre.html">Sobre o Projeto</a></li>
+      </ul>
     </div>
+    <div class="footer-contato">
+      <h4>Informações</h4>
+      <p>📍 São Borja – RS, Brasil</p>
+      <p>🌿 Educação Ambiental</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Descarte Consciente – Projeto comunitário · São Borja RS</span>
+    <span>Educação ambiental para todos</span>
   </div>
 </footer>
 
 <style>
-.filtro-cat {
-  background: var(--cinza-claro);
-  border: 2px solid transparent;
-  border-radius: 8px;
-  padding: 7px 14px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-family: 'Inter', sans-serif;
-  color: var(--texto-medio);
+.filtro-btn {
+  background: #fff; border: 1.5px solid rgba(0,0,0,0.1);
+  padding: 8px 18px; border-radius: 100px; font-size: 0.83rem;
+  font-family: 'DM Sans', sans-serif; cursor: pointer;
+  color: #5a7060; font-weight: 500; transition: all 0.2s;
 }
-.filtro-cat:hover { border-color: var(--verde-vivo); }
-.filtro-cat.active { background: rgba(46,204,113,0.15); border-color: var(--verde-vivo); color: var(--verde-escuro); }
+.filtro-btn:hover, .filtro-btn.active {
+  background: var(--verde-claro); color: #fff;
+  border-color: var(--verde-claro);
+}
 </style>
 
 <script>
-function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
+function toggleMenu() {
+  document.querySelector('.nav-links').classList.toggle('open');
+}
 
 const noticias = [
   {
-    id: 1,
     titulo: "Campanha de coleta de lixo eletrônico mobiliza moradores de São Borja",
-    data: "12 de março de 2025",
-    categoria: "Campanha",
+    data: "15 de março de 2025",
+    categoria: "campanha",
+    catLabel: "📢 Campanha",
     emoji: "📦",
-    resumo: "A Secretaria Municipal de Meio Ambiente realizou mais uma edição da campanha de coleta de lixo eletrônico no Parque Esportivo General Vargas. Mais de 200 famílias participaram e foram coletadas mais de 2 toneladas de equipamentos eletrônicos descartados.",
-    destaque: true
+    cor: "linear-gradient(135deg, #0a3d2b, #1a6b47)",
+    resumo: "A Secretaria Municipal de Meio Ambiente realizou campanha de coleta no Parque Esportivo General Vargas, recolhendo mais de 2 toneladas de equipamentos eletrônicos da comunidade."
   },
   {
-    id: 2,
-    titulo: "São Borja ganha novo ponto permanente de coleta de e-lixo no centro",
-    data: "28 de fevereiro de 2025",
-    categoria: "Campanha",
-    emoji: "📍",
-    resumo: "A Prefeitura Municipal inaugurou um novo ponto de coleta permanente de lixo eletrônico na Secretaria de Meio Ambiente. O local aceita celulares, computadores, TVs e outros eletrônicos de segunda a sexta, das 8h às 17h.",
-    destaque: false
-  },
-  {
-    id: 3,
-    titulo: "Brasil gera mais de 2,1 milhões de toneladas de e-lixo por ano",
-    data: "15 de fevereiro de 2025",
-    categoria: "Reciclagem",
-    emoji: "🇧🇷",
-    resumo: "Novo relatório aponta que o Brasil é o maior gerador de lixo eletrônico da América Latina, mas recicla apenas 3% do total produzido. Especialistas defendem maior investimento em infraestrutura e conscientização da população.",
-    destaque: false
-  },
-  {
-    id: 4,
-    titulo: "SENAI abre programa de refurbishment de computadores para doação a escolas",
+    titulo: "Brasil é o 5º maior gerador de lixo eletrônico do mundo",
     data: "8 de fevereiro de 2025",
-    categoria: "Sustentabilidade",
-    emoji: "💻",
-    resumo: "O SENAI de São Borja lançou um programa para receber computadores usados, restaurá-los e doá-los a escolas públicas da região. Já foram doados 45 computadores no primeiro mês do projeto.",
-    destaque: false
+    categoria: "meio-ambiente",
+    catLabel: "🌿 Meio Ambiente",
+    emoji: "🌍",
+    cor: "linear-gradient(135deg, #1a4a6e, #2980b9)",
+    resumo: "Relatório da ONU aponta que o Brasil gera mais de 2,1 milhões de toneladas de e-lixo por ano. A taxa de reciclagem no país ainda é inferior a 3%, muito abaixo da média global."
   },
   {
-    id: 5,
-    titulo: "Lei de resíduos eletrônicos completa 14 anos com baixa implementação no país",
-    data: "31 de janeiro de 2025",
-    categoria: "Legislação",
-    emoji: "⚖️",
-    resumo: "A Política Nacional de Resíduos Sólidos, que obriga fabricantes a implementarem sistemas de logística reversa, completa mais um ano com apenas 30% das metas cumpridas. ONGs cobram maior fiscalização e engajamento municipal.",
-    destaque: false
-  },
-  {
-    id: 6,
-    titulo: "Escola Municipal adota programa 'Recicla Eletrônico' e ensina alunos sobre e-lixo",
+    titulo: "Prefeitura de São Borja anuncia novo ponto permanente de coleta",
     data: "22 de janeiro de 2025",
-    categoria: "Sustentabilidade",
+    categoria: "campanha",
+    catLabel: "📢 Campanha",
+    emoji: "🏛️",
+    cor: "linear-gradient(135deg, #0a3d2b, #0d2137)",
+    resumo: "A Secretaria de Meio Ambiente disponibiliza ponto fixo de coleta de lixo eletrônico para moradores entregarem equipamentos fora de uso durante o horário comercial."
+  },
+  {
+    titulo: "Reciclagem de eletrônicos pode recuperar ouro, prata e cobre",
+    data: "10 de janeiro de 2025",
+    categoria: "reciclagem",
+    catLabel: "♻️ Reciclagem",
+    emoji: "💎",
+    cor: "linear-gradient(135deg, #3d5a3e, #2d9e6b)",
+    resumo: "Uma tonelada de placas de circuito impresso contém mais ouro do que 17 toneladas de minério. A reciclagem adequada permite recuperar metais preciosos e reduzir a mineração."
+  },
+  {
+    titulo: "Escola em São Borja lança projeto de educação ambiental com foco em e-lixo",
+    data: "5 de dezembro de 2024",
+    categoria: "sustentabilidade",
+    catLabel: "🌱 Sustentabilidade",
     emoji: "🏫",
-    resumo: "A Escola Municipal José do Patrocínio implementou o programa educativo 'Recicla Eletrônico', que ensina alunos do ensino fundamental sobre os impactos do lixo eletrônico e como descartar corretamente. Mais de 300 alunos já participaram.",
-    destaque: false
+    cor: "linear-gradient(135deg, #1a6b47, #2980b9)",
+    resumo: "Estudantes criaram pontos de coleta de pilhas e pequenos eletrônicos nas dependências da escola. O projeto visa conscientizar alunos e famílias sobre o descarte responsável."
   },
   {
-    id: 7,
-    titulo: "Pesquisa revela que 78% dos brasileiros não sabem onde descartar e-lixo",
-    data: "14 de janeiro de 2025",
-    categoria: "Reciclagem",
-    emoji: "📊",
-    resumo: "Levantamento nacional aponta que a grande maioria da população brasileira desconhece os pontos de coleta de lixo eletrônico em suas cidades. O estudo reforça a necessidade de campanhas de conscientização como a realizada em São Borja.",
-    destaque: false
+    titulo: "SENAI parceria: cursos de manutenção eletrônica reaproveita equipamentos",
+    data: "18 de novembro de 2024",
+    categoria: "reciclagem",
+    catLabel: "♻️ Reciclagem",
+    emoji: "🔧",
+    cor: "linear-gradient(135deg, #1a4a6e, #0a3d2b)",
+    resumo: "Alunos de cursos técnicos do SENAI de São Borja recuperam equipamentos eletrônicos doados, aprendendo manutenção enquanto contribuem com a comunidade."
   },
   {
-    id: 8,
-    titulo: "Farmácias aderem ao programa de coleta de pilhas e baterias em São Borja",
-    data: "5 de janeiro de 2025",
-    categoria: "Campanha",
-    emoji: "🔋",
-    resumo: "Seis farmácias de São Borja aderiram ao programa estadual de coleta de pilhas e baterias, ampliando os pontos de descarte disponíveis na cidade. Coletores específicos foram instalados nas entradas dos estabelecimentos.",
-    destaque: false
+    titulo: "Chumbo e mercúrio: riscos ocultos no lixo eletrônico descartado incorretamente",
+    data: "3 de outubro de 2024",
+    categoria: "meio-ambiente",
+    catLabel: "🌿 Meio Ambiente",
+    emoji: "⚠️",
+    cor: "linear-gradient(135deg, #5a3020, #e07b39)",
+    resumo: "Estudo revela que metais pesados presentes em eletrônicos contaminam solos e lençóis freáticos. A contaminação pode persistir por décadas, afetando a saúde de gerações futuras."
   },
   {
-    id: 9,
-    titulo: "Rio Grande do Sul avança na criação de cooperativas de reciclagem de eletrônicos",
-    data: "20 de dezembro de 2024",
-    categoria: "Reciclagem",
-    emoji: "🌿",
-    resumo: "O governo estadual lançou incentivos para a criação de cooperativas de reciclagem de eletrônicos no RS, gerando renda para trabalhadores e reduzindo o impacto ambiental do e-lixo. São Borja está entre as cidades contempladas.",
-    destaque: false
+    titulo: "Rio Grande do Sul avança em políticas de descarte de eletrônicos",
+    data: "20 de setembro de 2024",
+    categoria: "sustentabilidade",
+    catLabel: "🌱 Sustentabilidade",
+    emoji: "🏛️",
+    cor: "linear-gradient(135deg, #0d2137, #1a6b47)",
+    resumo: "Governo estadual fortalece legislação sobre logística reversa de eletrônicos, obrigando fabricantes e varejistas a oferecerem pontos de coleta gratuitos ao consumidor."
+  },
+  {
+    titulo: "Celulares velhos: o que fazer antes de descartar?",
+    data: "7 de agosto de 2024",
+    categoria: "reciclagem",
+    catLabel: "♻️ Reciclagem",
+    emoji: "📱",
+    cor: "linear-gradient(135deg, #2d9e6b, #1a4a6e)",
+    resumo: "Antes de entregar seu celular ao ponto de coleta, é essencial remover o cartão SIM, fazer backup dos dados e restaurar o aparelho às configurações de fábrica para proteger sua privacidade."
   }
 ];
 
-let catAtiva = 'todas';
+let categoriaAtiva = 'todas';
 
 function renderNoticias(lista) {
-  const grid = document.getElementById('noticiasGrid');
-  const semRes = document.getElementById('semResultados');
-
+  const grid = document.getElementById('noticias-grid');
+  const semRes = document.getElementById('sem-resultados');
+  grid.innerHTML = '';
+  
   if (lista.length === 0) {
-    grid.style.display = 'none';
     semRes.style.display = 'block';
     return;
   }
-
-  grid.style.display = 'grid';
   semRes.style.display = 'none';
-
-  grid.innerHTML = lista.map(n => `
-    <article class="noticia-card fade-in" style="${n.destaque ? 'border:2px solid rgba(46,204,113,0.3);' : ''}">
-      ${n.destaque ? '<div style="position:absolute;top:12px;left:12px;background:#2ecc71;color:white;padding:3px 10px;border-radius:100px;font-size:0.7rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;z-index:1;">⭐ Destaque</div>' : ''}
-      <div class="noticia-img" style="position:relative;">${n.emoji}</div>
+  
+  lista.forEach((n, i) => {
+    const card = document.createElement('div');
+    card.className = 'noticia-card fade-in';
+    card.innerHTML = `
+      <div class="noticia-img" style="background:${n.cor};font-size:3.5rem;">${n.emoji}</div>
       <div class="noticia-body">
         <div class="noticia-meta">
-          <span class="noticia-categoria">${n.categoria}</span>
+          <span class="noticia-cat">${n.catLabel}</span>
           <span class="noticia-data">📅 ${n.data}</span>
         </div>
         <h3>${n.titulo}</h3>
         <p>${n.resumo}</p>
-        <a href="#" class="ler-mais">Ler mais →</a>
+        <a href="#" class="noticia-link">Leia mais →</a>
       </div>
-    </article>
-  `).join('');
-
-  // re-observe fade-ins
-  document.querySelectorAll('.fade-in').forEach(el => {
-    el.classList.add('visible');
+    `;
+    grid.appendChild(card);
   });
+  
+  // Re-observe
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 60);
+    });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 }
 
 function filtrarNoticias() {
   const termo = document.getElementById('searchInput').value.toLowerCase();
-  document.getElementById('termoBusca').textContent = termo;
-  let lista = noticias;
-  if (catAtiva !== 'todas') lista = lista.filter(n => n.categoria === catAtiva);
-  if (termo) lista = lista.filter(n =>
-    n.titulo.toLowerCase().includes(termo) ||
-    n.resumo.toLowerCase().includes(termo) ||
-    n.categoria.toLowerCase().includes(termo)
-  );
-  renderNoticias(lista);
+  document.getElementById('termo-pesquisa').textContent = termo;
+  
+  let filtradas = noticias;
+  if (categoriaAtiva !== 'todas') {
+    filtradas = filtradas.filter(n => n.categoria === categoriaAtiva);
+  }
+  if (termo) {
+    filtradas = filtradas.filter(n => 
+      n.titulo.toLowerCase().includes(termo) || 
+      n.resumo.toLowerCase().includes(termo)
+    );
+  }
+  renderNoticias(filtradas);
 }
 
-function filtrarCategoria(cat) {
-  catAtiva = cat;
-  document.querySelectorAll('.filtro-cat').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+function filtrarCategoria(cat, btn) {
+  categoriaAtiva = cat;
+  document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
   filtrarNoticias();
 }
 
-// Init
+// Inicializa
 renderNoticias(noticias);
 </script>
+
 </body>
 </html>
