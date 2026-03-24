@@ -5,207 +5,412 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sobre o Projeto – Descarte Consciente São Borja</title>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+  <style>
+    /* ── Sobre: estilos próprios ── */
+    .missao-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    .missao-texto h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--verde-escuro);
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+      line-height: 1.15;
+    }
+    .missao-texto p {
+      color: var(--cinza-sub);
+      font-size: 0.97rem;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .missao-texto strong { color: var(--verde-escuro); font-weight: 700; }
+
+    .missao-quote {
+      border-left: 4px solid var(--verde-vivo);
+      padding: 16px 22px;
+      background: var(--cinza-claro);
+      border-radius: 0 14px 14px 0;
+      color: var(--verde-escuro);
+      font-style: italic;
+      font-size: 1rem;
+      margin: 24px 0;
+      line-height: 1.65;
+    }
+
+    .missao-btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    /* Botão secundário sobre fundo BRANCO — usa cor escura */
+    .btn-outline-verde {
+      background: transparent;
+      color: var(--verde-escuro);
+      padding: 13px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.92rem;
+      border: 2px solid var(--verde-escuro);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .btn-outline-verde:hover {
+      background: var(--verde-escuro);
+      color: var(--verde-vivo);
+    }
+
+    /* Cards de funcionalidades */
+    .feat-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .feat-card {
+      background: #fff;
+      border: 1px solid var(--cinza-medio);
+      border-radius: 14px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: all 0.2s;
+    }
+    .feat-card:hover {
+      border-color: var(--verde-claro);
+      box-shadow: 0 4px 16px var(--sombra);
+      transform: translateX(4px);
+    }
+    .feat-icon {
+      width: 44px; height: 44px;
+      border-radius: 11px;
+      background: var(--cinza-claro);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .feat-card h4 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--verde-escuro);
+      margin-bottom: 2px;
+    }
+    .feat-card p {
+      font-size: 0.82rem;
+      color: var(--cinza-sub);
+      line-height: 1.45;
+    }
+
+    /* Seção impacto sobre fundo cinza */
+    .impacto-section { background: var(--cinza-claro); }
+
+    /* Seção parceiros */
+    .parceiro-card {
+      background: #fff;
+      border: 1px solid var(--cinza-medio);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: all 0.2s;
+    }
+    .parceiro-card:hover {
+      box-shadow: 0 6px 24px var(--sombra);
+      transform: translateY(-3px);
+    }
+    .parceiro-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      background: var(--cinza-claro);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .parceiro-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700; font-size: 0.97rem;
+      color: var(--verde-escuro); margin-bottom: 6px;
+    }
+    .parceiro-card p {
+      font-size: 0.86rem; color: var(--cinza-sub);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 860px) {
+      .missao-grid { grid-template-columns: 1fr; gap: 36px; }
+    }
+  </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">
-    <div class="nav-logo-icon">♻️</div>
-    <span class="nav-logo-text">Descarte <span>Consciente</span></span>
-  </a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="mapa.html">Pontos de Descarte</a></li>
-    <li><a href="noticias.html">Notícias</a></li>
-    <li><a href="estatisticas.html">Estatísticas</a></li>
-    <li><a href="sobre.html" class="active">Sobre</a></li>
-  </ul>
-  <button class="nav-hamburger" onclick="toggleNav()">☰</button>
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">♻️</div>
+      Descarte Consciente
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="mapa.html">Pontos de Descarte</a></li>
+      <li><a href="noticias.html">Notícias</a></li>
+      <li><a href="estatisticas.html">Estatísticas</a></li>
+      <li><a href="sobre.html" class="active">Sobre</a></li>
+      <li><a href="admin.html" style="background:rgba(61,220,132,0.18);border:1px solid rgba(61,220,132,0.35);border-radius:6px;padding:6px 12px;color:#3ddc84;font-size:.82rem;font-weight:700;">⚙️ Admin</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
 </nav>
 
-<div class="page-wrapper">
-
-  <div class="page-header">
-    <div class="page-header-inner">
-      <div class="page-header-tag">🌿 O Projeto</div>
-      <h1>Sobre o Projeto</h1>
-      <p>Conheça a missão, os valores e a equipe por trás do Descarte Consciente São Borja</p>
-    </div>
-  </div>
-
-  <section class="sobre-section">
-    <div class="section-inner">
-
-      <div class="sobre-grid fade-in">
-        <div>
-          <div class="objetivo-card">
-            <h3>🎯 Nossa Missão</h3>
-            <p>
-              Este site foi criado para informar os moradores de São Borja sobre o descarte correto de lixo
-              eletrônico e incentivar práticas sustentáveis na cidade. Acreditamos que a educação ambiental
-              é o primeiro passo para uma comunidade mais consciente e um futuro mais limpo para todos.
-            </p>
-          </div>
-
-          <div class="section-tag">💡 Por que criamos isso?</div>
-          <h2 class="section-title" style="font-size:1.5rem;margin-bottom:1rem;">O problema que queremos resolver</h2>
-          <p style="color:var(--texto-medio);line-height:1.7;margin-bottom:1.5rem;">
-            São Borja, como tantas outras cidades brasileiras, enfrenta o desafio crescente do descarte
-            inadequado de eletrônicos. Celulares quebrados, computadores velhos e pilhas usadas frequentemente
-            acabam no lixo comum, contaminando o solo e a água da nossa cidade.
-          </p>
-          <p style="color:var(--texto-medio);line-height:1.7;margin-bottom:1.5rem;">
-            O problema não é falta de vontade — é falta de informação. Muitos moradores simplesmente
-            não sabem onde e como descartar corretamente esses materiais. Por isso criamos este portal:
-            para centralizar toda a informação necessária em um só lugar, acessível a qualquer sãoborjense.
-          </p>
-
-          <div style="background:rgba(46,204,113,0.08);border:1px solid rgba(46,204,113,0.2);border-radius:12px;padding:20px 24px;">
-            <p style="font-style:italic;color:var(--texto-medio);line-height:1.7;font-size:0.95rem;">
-              "Cada eletrônico descartado corretamente é uma vitória para o meio ambiente de São Borja.
-              Juntos, podemos construir uma cidade mais sustentável para as próximas gerações."
-            </p>
-            <p style="color:var(--verde-medio);font-weight:600;font-size:0.85rem;margin-top:8px;">— Equipe Descarte Consciente</p>
-          </div>
-        </div>
-
-        <div>
-          <div class="section-tag">🌟 Nossos Valores</div>
-          <h2 class="section-title" style="font-size:1.5rem;margin-bottom:1.5rem;">O que nos move</h2>
-          <ul class="valores-list">
-            <li class="valor-item">
-              <span class="ic">🌍</span>
-              <div class="text">
-                <h4>Responsabilidade Ambiental</h4>
-                <p>Acreditamos que cada pessoa tem responsabilidade pelo impacto ambiental dos seus resíduos, incluindo os eletrônicos.</p>
-              </div>
-            </li>
-            <li class="valor-item">
-              <span class="ic">📚</span>
-              <div class="text">
-                <h4>Educação como Transformação</h4>
-                <p>Informação acessível e de qualidade é o principal instrumento para mudar comportamentos e proteger o meio ambiente.</p>
-              </div>
-            </li>
-            <li class="valor-item">
-              <span class="ic">🤝</span>
-              <div class="text">
-                <h4>Comunidade e Parceria</h4>
-                <p>Trabalhamos em parceria com a Prefeitura, escolas, empresas e moradores para ampliar os pontos de coleta e conscientização.</p>
-              </div>
-            </li>
-            <li class="valor-item">
-              <span class="ic">🔄</span>
-              <div class="text">
-                <h4>Economia Circular</h4>
-                <p>Defendemos o reaproveitamento de materiais e a doação de equipamentos que ainda funcionam antes do descarte definitivo.</p>
-              </div>
-            </li>
-            <li class="valor-item">
-              <span class="ic">🏙️</span>
-              <div class="text">
-                <h4>Orgulho de São Borja</h4>
-                <p>Queremos que São Borja seja referência no Rio Grande do Sul em gestão responsável de resíduos eletrônicos.</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Equipe -->
-      <div class="fade-in" style="margin-top:4rem;">
-        <div class="section-tag">👥 Quem somos</div>
-        <h2 class="section-title" style="font-size:1.6rem;margin-bottom:0.5rem;">Nossa Equipe</h2>
-        <p style="color:var(--texto-medio);margin-bottom:2rem;">Um grupo voluntário de sãoborjenses comprometidos com o meio ambiente e a educação da nossa comunidade.</p>
-        <div class="equipe-grid">
-          <div class="equipe-card">
-            <div class="equipe-avatar">👩‍💼</div>
-            <h4>Secretaria de Meio Ambiente</h4>
-            <span>Parceiro Institucional</span>
-          </div>
-          <div class="equipe-card">
-            <div class="equipe-avatar">🎓</div>
-            <h4>SENAI São Borja</h4>
-            <span>Parceiro Técnico</span>
-          </div>
-          <div class="equipe-card">
-            <div class="equipe-avatar">🏫</div>
-            <h4>Escolas Municipais</h4>
-            <span>Parceiro Educativo</span>
-          </div>
-          <div class="equipe-card">
-            <div class="equipe-avatar">🌿</div>
-            <h4>Voluntários Comunitários</h4>
-            <span>Equipe de Campo</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Como contribuir -->
-      <div class="fade-in" style="margin-top:4rem;background:linear-gradient(135deg,var(--verde-escuro),var(--azul-profundo));border-radius:var(--radius);padding:48px;text-align:center;">
-        <div style="font-size:3rem;margin-bottom:1rem;">🙌</div>
-        <h3 style="font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:white;margin-bottom:1rem;">Quer contribuir com o projeto?</h3>
-        <p style="color:rgba(255,255,255,0.75);max-width:550px;margin:0 auto 2rem;line-height:1.7;font-size:1rem;">
-          Você pode ajudar divulgando o site, sugerindo novos pontos de coleta, participando das campanhas
-          ou entrando em contato para ser parceiro do Descarte Consciente São Borja.
-        </p>
-        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-          <a href="mapa.html" class="btn-primary">📍 Ver Pontos de Descarte</a>
-          <a href="noticias.html" class="btn-secondary">📰 Ver Campanhas</a>
-        </div>
-        <p style="color:rgba(255,255,255,0.5);font-size:0.82rem;margin-top:1.5rem;">
-          📧 contato@descarteconsciente.org · 🏛️ Em parceria com a Prefeitura Municipal de São Borja – RS
-        </p>
-      </div>
-
-    </div>
-  </section>
-
+<div class="page-header">
+  <h1>Sobre o <span>Projeto</span></h1>
+  <p>Conheça a missão e os objetivos do portal comunitário Descarte Consciente de São Borja.</p>
 </div>
 
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div style="display:flex;align-items:center;gap:10px;">
-          <div style="width:36px;height:36px;background:linear-gradient(135deg,#2ecc71,#64b5f6);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;">♻️</div>
-          <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:#fff;">Descarte <span style="color:#2ecc71;">Consciente</span></span>
+<!-- ── MISSÃO ── -->
+<section style="background:#fff;">
+  <div class="container">
+    <div class="missao-grid">
+
+      <div class="missao-texto fade-in">
+        <h2>Nossa Missão</h2>
+        <p>
+          O <strong>Descarte Consciente</strong> é um portal comunitário educativo criado para
+          informar os moradores de São Borja sobre o descarte correto de lixo eletrônico e
+          incentivar práticas sustentáveis em nossa cidade.
+        </p>
+        <div class="missao-quote">
+          "Este site foi criado para informar os moradores de São Borja sobre o descarte
+          correto de lixo eletrônico e incentivar práticas sustentáveis na cidade."
         </div>
-        <p>Projeto comunitário educativo sobre o descarte correto de lixo eletrônico em São Borja, Rio Grande do Sul.</p>
+        <p>
+          O lixo eletrônico é um dos maiores desafios ambientais da atualidade. Celulares,
+          computadores e televisores contêm substâncias tóxicas que, quando descartadas
+          incorretamente, contaminam o solo, a água e prejudicam a saúde.
+        </p>
+        <p>
+          Em São Borja, a Secretaria Municipal de Meio Ambiente tem trabalhado para criar
+          pontos de coleta e realizar campanhas de conscientização. Este projeto complementa
+          esse esforço, centralizando informações e facilitando o acesso dos cidadãos.
+        </p>
+        <p>
+          A reciclagem adequada de eletrônicos não apenas protege o meio ambiente — também
+          permite recuperar materiais valiosos como cobre, ouro, prata e plásticos,
+          contribuindo para a economia circular.
+        </p>
+        <div class="missao-btns">
+          <a href="mapa.html" class="btn-primary">🗺️ Ver Pontos de Coleta</a>
+          <a href="index.html" class="btn-outline-verde">🏠 Voltar ao Início</a>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>Páginas</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="mapa.html">Pontos de Descarte</a></li>
-          <li><a href="noticias.html">Notícias</a></li>
-          <li><a href="estatisticas.html">Estatísticas</a></li>
-          <li><a href="sobre.html">Sobre o Projeto</a></li>
-        </ul>
+
+      <div class="feat-cards fade-in">
+        <div class="feat-card">
+          <div class="feat-icon">🎯</div>
+          <div>
+            <h4>Objetivo Principal</h4>
+            <p>Educar moradores sobre descarte correto de eletrônicos em São Borja.</p>
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🗺️</div>
+          <div>
+            <h4>Mapa Interativo</h4>
+            <p>Localizar pontos de coleta e entrega em toda a cidade com facilidade.</p>
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">📰</div>
+          <div>
+            <h4>Informação Atualizada</h4>
+            <p>Notícias sobre campanhas, reciclagem e meio ambiente no Rio Grande do Sul.</p>
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">📊</div>
+          <div>
+            <h4>Dados e Estatísticas</h4>
+            <p>Números reais sobre o impacto do lixo eletrônico no Brasil e no mundo.</p>
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🤝</div>
+          <div>
+            <h4>Iniciativa Comunitária</h4>
+            <p>Projeto desenvolvido pela e para a comunidade de São Borja – RS.</p>
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">📱</div>
+          <div>
+            <h4>Acessível a Todos</h4>
+            <p>Site responsivo para celulares, tablets e computadores.</p>
+          </div>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>Contato</h4>
-        <ul>
-          <li><a href="#">📧 contato@descarteconsciente.org</a></li>
-          <li><a href="#">🏛️ Secretaria de Meio Ambiente</a></li>
-          <li><a href="https://www.saoborja.rs.gov.br" target="_blank">🌐 saoborja.rs.gov.br</a></li>
-        </ul>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── IMPACTO ── -->
+<section class="impacto-section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag">🌿 Impacto</span>
+      <h2 class="section-title">Por que isso importa para São Borja?</h2>
+      <p class="section-desc">O descarte correto protege nossa cidade, nosso rio e nossas famílias.</p>
+    </div>
+    <div class="cards-grid">
+      <div class="card fade-in">
+        <div class="card-icon">🏙️</div>
+        <h3>São Borja mais limpa</h3>
+        <p>Menos eletrônicos nos aterros e no ambiente urbano, contribuindo para uma cidade mais organizada e saudável.</p>
+      </div>
+      <div class="card fade-in">
+        <div class="card-icon">🌊</div>
+        <h3>Rio Uruguai protegido</h3>
+        <p>Evitar a contaminação do solo protege os recursos hídricos, incluindo o Rio Uruguai que margeia nossa cidade.</p>
+      </div>
+      <div class="card fade-in">
+        <div class="card-icon">👨‍👩‍👧</div>
+        <h3>Saúde das famílias</h3>
+        <p>Metais pesados de eletrônicos podem afetar gravemente a saúde de crianças e adultos. O descarte correto previne riscos.</p>
+      </div>
+      <div class="card fade-in">
+        <div class="card-icon">💼</div>
+        <h3>Geração de emprego</h3>
+        <p>A cadeia de reciclagem gera empregos formais em coleta, triagem, desmontagem e reaproveitamento de materiais.</p>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2025 Descarte Consciente – São Borja RS · Educação Ambiental</span>
-      <div class="eco-badge">🌿 Projeto Comunitário Sustentável</div>
+  </div>
+</section>
+
+<!-- ── COMO CONTRIBUIR ── -->
+<section class="como-section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag" style="background:rgba(61,220,132,0.2);color:#3ddc84;border-color:rgba(61,220,132,0.35);">💚 Ação</span>
+      <h2 class="section-title" style="color:#ffffff;">Como você pode contribuir</h2>
+      <p class="section-desc" style="color:rgba(255,255,255,0.82);">Cada ação individual faz diferença para nossa comunidade.</p>
     </div>
+    <div class="steps">
+      <div class="step fade-in">
+        <div class="step-num">💡</div>
+        <h3>Eduque seu entorno</h3>
+        <p>Compartilhe este site com família, amigos e vizinhos. A mudança começa com informação.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">♻️</div>
+        <h3>Descarte corretamente</h3>
+        <p>Use os pontos de coleta mapeados aqui. Nunca jogue eletrônicos no lixo comum.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">📢</div>
+        <h3>Participe das campanhas</h3>
+        <p>Fique atento às campanhas da Prefeitura e leve seus equipamentos nos dias de coleta especial.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">🏫</div>
+        <h3>Leve à escola</h3>
+        <p>Incentive escolas e empresas de São Borja a adotarem pontos de coleta permanentes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PARCEIROS ── -->
+<section style="background:#fff;">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag">🤝 Parceiros</span>
+      <h2 class="section-title">Entidades Relacionadas</h2>
+      <p class="section-desc">Organizações que atuam no tema em São Borja e no Rio Grande do Sul.</p>
+    </div>
+    <div class="cards-grid">
+      <div class="parceiro-card fade-in">
+        <div class="parceiro-icon">🏛️</div>
+        <div>
+          <h3>Prefeitura de São Borja</h3>
+          <p>Secretaria Municipal de Meio Ambiente — responsável pelas campanhas oficiais de coleta de lixo eletrônico na cidade.</p>
+        </div>
+      </div>
+      <div class="parceiro-card fade-in">
+        <div class="parceiro-icon">🎓</div>
+        <div>
+          <h3>SENAI São Borja</h3>
+          <p>Parceiro na coleta e reaproveitamento de equipamentos eletrônicos. Cursos técnicos de manutenção e reciclagem.</p>
+        </div>
+      </div>
+      <div class="parceiro-card fade-in">
+        <div class="parceiro-icon">🌿</div>
+        <div>
+          <h3>FEPAM / SEMA-RS</h3>
+          <p>Fundação Estadual de Proteção Ambiental e Secretaria de Meio Ambiente do RS — regulamentação e fiscalização ambiental.</p>
+        </div>
+      </div>
+      <div class="parceiro-card fade-in">
+        <div class="parceiro-icon">📋</div>
+        <div>
+          <h3>ABREE</h3>
+          <p>Associação Brasileira de Reciclagem de Eletroeletrônicos e Eletrodomésticos — referência nacional no tema.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <h3>♻️ Descarte Consciente</h3>
+      <p>Portal comunitário educativo sobre descarte correto de lixo eletrônico em São Borja – RS. Juntos por uma cidade mais sustentável.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="mapa.html">Pontos de Descarte</a></li>
+        <li><a href="noticias.html">Notícias</a></li>
+        <li><a href="estatisticas.html">Estatísticas</a></li>
+        <li><a href="sobre.html">Sobre o Projeto</a></li>
+      </ul>
+    </div>
+    <div class="footer-contato">
+      <h4>Informações</h4>
+      <p>📍 São Borja – RS, Brasil</p>
+      <p>🌿 Educação Ambiental</p>
+      <p>🏛️ Iniciativa Comunitária</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Descarte Consciente – Projeto comunitário · São Borja RS</span>
+    <span>Educação ambiental para todos</span>
   </div>
 </footer>
 
 <script>
-function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+function toggleMenu() {
+  document.querySelector('.nav-links').classList.toggle('open');
+}
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e, i) {
+    if (e.isIntersecting) setTimeout(function(){ e.target.classList.add('visible'); }, i * 70);
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(function(el){ observer.observe(el); });
 </script>
+
 </body>
 </html>
