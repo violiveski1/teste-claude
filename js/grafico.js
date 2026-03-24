@@ -1,213 +1,221 @@
-// Configuração global de cores
-const CORES = {
-  verde: '#2ecc71',
-  azul: '#3498db',
-  laranja: '#f39c12',
-  vermelho: '#e74c3c',
-  roxo: '#9b59b6',
-  ciano: '#1abc9c',
-  amarelo: '#f1c40f',
-  cinzaEscuro: '#2c3e50'
-};
+/**
+ * graficos.js
+ * Requer Chart.js 4 (carregado via CDN na página).
+ * Sem arrow functions em callbacks críticos para compatibilidade (RNF1).
+ */
 
-const PALETA = [CORES.verde, CORES.azul, CORES.laranja, CORES.vermelho, CORES.roxo, CORES.ciano, CORES.amarelo];
+// ── Paleta alinhada ao CSS ──────────────────────────────
+var VERDE_ESCURO  = '#0a3d2b';
+var VERDE_MEDIO   = '#1a6b47';
+var VERDE         = '#1e8f5e';
+var VERDE_VIVO    = '#3ddc84';
+var AZUL          = '#1a6fa8';
+var AZUL_CEU      = '#5bc8f5';
+var LARANJA       = '#c45e1a';
+var AMARELO       = '#d4900a';
+var CINZA_TEXTO   = '#3d5c48';
 
-// Defaults globais Chart.js
-Chart.defaults.font.family = "'Inter', sans-serif";
-Chart.defaults.color = '#3d5a3d';
+// Defaults globais
+Chart.defaults.font.family  = "'DM Sans', sans-serif";
+Chart.defaults.font.size    = 12;
+Chart.defaults.color        = CINZA_TEXTO;
+Chart.defaults.plugins.legend.labels.boxWidth = 14;
+Chart.defaults.plugins.legend.labels.padding  = 16;
 
-function initGraficos() {
-
-  // 1. Gráfico de Pizza – Tipos de lixo eletrônico
-  const ctxPizza = document.getElementById('graficoPizza');
-  if (ctxPizza) {
-    new Chart(ctxPizza, {
-      type: 'doughnut',
-      data: {
-        labels: [
-          'Eletrodomésticos',
-          'Equipamentos TI',
-          'Telas/Monitores',
-          'Celulares',
-          'Lâmpadas',
-          'Pilhas/Baterias',
-          'Outros'
-        ],
-        datasets: [{
-          data: [44.9, 17.4, 6.7, 4.7, 4.7, 2.3, 19.3],
-          backgroundColor: PALETA,
-          borderWidth: 3,
-          borderColor: '#f5f0e8',
-          hoverOffset: 8
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        plugins: {
-          legend: {
-            position: 'bottom',
-            labels: { padding: 14, font: { size: 12 }, boxWidth: 14 }
-          },
-          tooltip: {
-            callbacks: {
-              label: ctx => ` ${ctx.label}: ${ctx.parsed}%`
-            }
-          }
-        },
-        cutout: '60%'
-      }
-    });
-  }
-
-  // 2. Gráfico de Barras – Crescimento do lixo eletrônico no Brasil (Mt)
-  const ctxBarras = document.getElementById('graficoBarras');
-  if (ctxBarras) {
-    new Chart(ctxBarras, {
-      type: 'bar',
-      data: {
-        labels: ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
-        datasets: [{
-          label: 'Gerado (milhões de toneladas)',
-          data: [41.8, 44.7, 44.7, 46.0, 49.8, 53.6, 53.6, 57.4, 59.4, 62.0],
-          backgroundColor: CORES.verde + 'cc',
-          borderColor: CORES.verde,
-          borderWidth: 2,
-          borderRadius: 8,
-          borderSkipped: false
-        }, {
-          label: 'Reciclado (milhões de toneladas)',
-          data: [8.5, 9.0, 9.2, 9.6, 9.8, 9.3, 9.8, 9.8, 10.2, 10.5],
-          backgroundColor: CORES.azul + 'cc',
-          borderColor: CORES.azul,
-          borderWidth: 2,
-          borderRadius: 8,
-          borderSkipped: false
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        plugins: {
-          legend: {
-            position: 'top',
-            labels: { padding: 16, font: { size: 12 } }
-          },
-          tooltip: {
-            callbacks: {
-              label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y} Mt`
-            }
-          }
-        },
-        scales: {
-          y: {
-            beginAtZero: false,
-            min: 0,
-            title: { display: true, text: 'Milhões de toneladas', font: { size: 11 } },
-            grid: { color: 'rgba(0,0,0,0.06)' }
-          },
-          x: { grid: { display: false } }
-        }
-      }
-    });
-  }
-
-  // 3. Gráfico de Linha – Taxa de reciclagem (%)
-  const ctxLinha = document.getElementById('graficoLinha');
-  if (ctxLinha) {
-    new Chart(ctxLinha, {
-      type: 'line',
-      data: {
-        labels: ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
-        datasets: [{
-          label: 'Taxa de reciclagem global (%)',
-          data: [20.3, 20.1, 20.6, 20.8, 19.7, 17.4, 18.3, 17.1, 17.6, 17.0],
-          borderColor: CORES.laranja,
-          backgroundColor: CORES.laranja + '20',
-          fill: true,
-          tension: 0.4,
-          pointBackgroundColor: CORES.laranja,
-          pointRadius: 5,
-          pointHoverRadius: 8,
-          borderWidth: 3
-        }, {
-          label: 'Taxa de reciclagem Brasil (%)',
-          data: [3.0, 3.1, 3.0, 3.2, 2.9, 3.0, 3.1, 3.2, 3.0, 3.1],
-          borderColor: CORES.vermelho,
-          backgroundColor: CORES.vermelho + '15',
-          fill: true,
-          tension: 0.4,
-          pointBackgroundColor: CORES.vermelho,
-          pointRadius: 5,
-          pointHoverRadius: 8,
-          borderWidth: 3,
-          borderDash: [6, 3]
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        plugins: {
-          legend: {
-            position: 'top',
-            labels: { padding: 16, font: { size: 12 } }
-          }
-        },
-        scales: {
-          y: {
-            beginAtZero: true,
-            max: 30,
-            title: { display: true, text: 'Taxa de reciclagem (%)', font: { size: 11 } },
-            grid: { color: 'rgba(0,0,0,0.06)' },
-            ticks: {
-              callback: v => v + '%'
-            }
-          },
-          x: { grid: { display: false } }
-        }
-      }
-    });
-  }
-
-  // 4. Gráfico Horizontal – Materiais recuperáveis (valor estimado por tonelada)
-  const ctxMateriais = document.getElementById('graficoMateriais');
-  if (ctxMateriais) {
-    new Chart(ctxMateriais, {
-      type: 'bar',
-      data: {
-        labels: ['Ouro', 'Paládio', 'Prata', 'Cobre', 'Alumínio', 'Ferro/Aço', 'Plástico'],
-        datasets: [{
-          label: 'Valor estimado (R$/kg)',
-          data: [290000, 210000, 3500, 42, 12, 8, 4],
-          backgroundColor: [CORES.amarelo, CORES.laranja, CORES.cinzaEscuro, CORES.laranja+'aa', CORES.azul, CORES.verde, CORES.ciano],
-          borderRadius: 6,
-          borderWidth: 0
-        }]
-      },
-      options: {
-        indexAxis: 'y',
-        responsive: true,
-        maintainAspectRatio: true,
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            callbacks: {
-              label: ctx => ` R$ ${ctx.parsed.x.toLocaleString('pt-BR')}/kg`
-            }
-          }
-        },
-        scales: {
-          x: {
-            type: 'logarithmic',
-            title: { display: true, text: 'Valor em R$/kg (escala logarítmica)', font: { size: 11 } },
-            grid: { color: 'rgba(0,0,0,0.06)' }
-          },
-          y: { grid: { display: false } }
-        }
-      }
-    });
-  }
-
+// Opções de escala reutilizáveis
+function escalaBase() {
+  return {
+    grid:  { color: 'rgba(0,0,0,0.06)', drawBorder: false },
+    ticks: { color: CINZA_TEXTO }
+  };
+}
+function semGrade() {
+  return { grid: { display: false }, ticks: { color: CINZA_TEXTO } };
 }
 
-document.addEventListener('DOMContentLoaded', initGraficos);
+// ── 1. DONUT — Composição ──────────────────────────────
+new Chart(document.getElementById('graficoPizza'), {
+  type: 'doughnut',
+  data: {
+    labels: [
+      'Eletrodomésticos', 'Equipamentos TI',
+      'Telas (TVs/Monitores)', 'Telecomunicações',
+      'Pequenos Equipamentos', 'Outros'
+    ],
+    datasets: [{
+      data: [35, 25, 18, 12, 7, 3],
+      backgroundColor: [VERDE, AZUL, VERDE_VIVO, AZUL_CEU, AMARELO, '#b0c8ba'],
+      borderWidth: 2,
+      borderColor: '#fff',
+      hoverOffset: 10
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: true,
+    cutout: '60%',
+    plugins: {
+      legend: { position: 'bottom' },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) { return '  ' + ctx.label + ': ' + ctx.parsed + '%'; }
+        }
+      }
+    }
+  }
+});
+
+// ── 2. BARRAS — Crescimento Brasil ─────────────────────
+new Chart(document.getElementById('graficoBarras'), {
+  type: 'bar',
+  data: {
+    labels: ['2015','2016','2017','2018','2019','2020','2021','2022','2023'],
+    datasets: [{
+      label: 'Milhões de toneladas',
+      data: [1.4, 1.5, 1.6, 1.7, 1.8, 1.85, 1.9, 2.0, 2.1],
+      backgroundColor: [
+        '#1a8a5a','#1a8f5e','#1e9562','#22a068',
+        '#26a86e','#2aaf74','#2eb87a','#33c080','#3ddc84'
+      ],
+      borderRadius: 6,
+      borderSkipped: false
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) { return '  ' + ctx.parsed.y + 'M toneladas'; }
+        }
+      }
+    },
+    scales: {
+      y: Object.assign(escalaBase(), {
+        beginAtZero: false, min: 1.2,
+        ticks: Object.assign(escalaBase().ticks, {
+          callback: function(v) { return v + 'M'; }
+        })
+      }),
+      x: semGrade()
+    }
+  }
+});
+
+// ── 3. BARRAS HORIZONTAIS — Reciclagem ─────────────────
+new Chart(document.getElementById('graficoReciclagem'), {
+  type: 'bar',
+  data: {
+    labels: ['Noruega','Suíça','U. Europeia','Japão','EUA','Mundo','China','Brasil'],
+    datasets: [{
+      label: '% Reciclado',
+      data: [74, 72, 48, 38, 15, 22, 10, 3],
+      backgroundColor: [
+        VERDE_VIVO, VERDE_VIVO, VERDE, VERDE,
+        AZUL_CEU, AMARELO, AZUL, LARANJA
+      ],
+      borderRadius: 5,
+      borderSkipped: false
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) { return '  ' + ctx.parsed.x + '% reciclado'; }
+        }
+      }
+    },
+    scales: {
+      x: Object.assign(escalaBase(), {
+        max: 80,
+        ticks: Object.assign(escalaBase().ticks, {
+          callback: function(v) { return v + '%'; }
+        })
+      }),
+      y: semGrade()
+    }
+  }
+});
+
+// ── 4. LINHA — Crescimento Global ──────────────────────
+new Chart(document.getElementById('graficoLinha'), {
+  type: 'line',
+  data: {
+    labels: ['2014','2016','2018','2019','2021','2022','2023','2024*','2030*'],
+    datasets: [{
+      label: 'E-lixo global (Mt)',
+      data: [44.7, 47.8, 50.0, 53.6, 57.4, 59.4, 62.0, 64.5, 82.0],
+      borderColor: VERDE_VIVO,
+      backgroundColor: 'rgba(61,220,132,0.10)',
+      borderWidth: 2.5,
+      pointBackgroundColor: VERDE_VIVO,
+      pointBorderColor: '#fff',
+      pointBorderWidth: 2,
+      pointRadius: 5,
+      tension: 0.35,
+      fill: true
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) { return '  ' + ctx.parsed.y + 'Mt'; }
+        }
+      }
+    },
+    scales: {
+      y: Object.assign(escalaBase(), {
+        ticks: Object.assign(escalaBase().ticks, {
+          callback: function(v) { return v + 'Mt'; }
+        })
+      }),
+      x: semGrade()
+    }
+  }
+});
+
+// ── 5. BARRAS — Materiais recuperáveis ─────────────────
+new Chart(document.getElementById('graficoMateriais'), {
+  type: 'bar',
+  data: {
+    labels: ['Ferro/Aço','Plásticos','Outros Metais','Cobre','Alumínio','Ouro/Prata','Vidro'],
+    datasets: [{
+      label: '% da composição',
+      data: [47, 21, 13, 7, 5, 3, 4],
+      backgroundColor: [AZUL, VERDE, AMARELO, LARANJA, AZUL_CEU, '#d4af00', '#7ab8a0'],
+      borderRadius: 7,
+      borderSkipped: false
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) { return '  ' + ctx.parsed.y + '% da composição'; }
+        }
+      }
+    },
+    scales: {
+      y: Object.assign(escalaBase(), {
+        ticks: Object.assign(escalaBase().ticks, {
+          callback: function(v) { return v + '%'; }
+        })
+      }),
+      x: semGrade()
+    }
+  }
+});
